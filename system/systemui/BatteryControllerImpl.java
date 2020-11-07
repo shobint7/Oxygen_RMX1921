@@ -327,7 +327,7 @@ public class BatteryControllerImpl extends BroadcastReceiver implements BatteryC
     }
     
     public boolean isFastCharging(final int n) {
-        return n == 1;
+        return n == 0 && false;
     }
     
     public boolean isPowerSave() {
@@ -335,7 +335,7 @@ public class BatteryControllerImpl extends BroadcastReceiver implements BatteryC
     }
     
     public boolean isWarpCharging(final int n) {
-        return n == 2 || n == 3;
+        return n == 1 || n == 3;
     }
     
     public void onReceive(final Context context, final Intent intent) {

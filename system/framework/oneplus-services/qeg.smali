@@ -20,26 +20,24 @@
 
 .field private static final DEBUG:Z
 
-.field private static final Qg:Z = false
+.field private static final Rg:Z = false
 
-.field private static final Rg:Ljava/lang/String; = "BatteryLed"
-
-.field private static final Sg:Ljava/lang/String; = "/sys/class/power_supply/battery/fastchg_status"
+.field private static final Sg:Ljava/lang/String; = "BatteryLed"
 
 .field private static final TAG:Ljava/lang/String; = "FastCharge"
 
-.field private static final Tg:Ljava/lang/String; = "/proc/enhance_dash"
+.field private static final Tg:Ljava/lang/String; = "/sys/class/power_supply/battery/voocchg_ing"
 
-.field private static final Ug:Ljava/lang/String; = "sys/class/power_supply/usb/real_type"
+.field private static final Ug:Ljava/lang/String; = "/proc/enhance_dash"
 
-.field private static Vg:Lcom/android/server/qeg$zta;
+.field private static final Vg:Ljava/lang/String; = "sys/class/power_supply/usb/real_type"
+
+.field private static Wg:Lcom/android/server/qeg$zta;
 
 .field private static mContext:Landroid/content/Context;
 
 
 # instance fields
-.field private Kg:Z
-
 .field private Lg:Z
 
 .field private Mg:Z
@@ -49,6 +47,8 @@
 .field private Og:Z
 
 .field private Pg:Z
+
+.field private Qg:Z
 
 .field private mBatteryLevel:I
 
@@ -89,7 +89,7 @@
 .method static synthetic access$100()Lcom/android/server/qeg$zta;
     .registers 1
 
-    sget-object v0, Lcom/android/server/qeg;->Vg:Lcom/android/server/qeg$zta;
+    sget-object v0, Lcom/android/server/qeg;->Wg:Lcom/android/server/qeg$zta;
 
     return-object v0
 .end method
@@ -374,7 +374,7 @@
 
     new-instance v1, Ljava/io/File;
 
-    const-string v2, "/sys/class/power_supply/battery/fastchg_status"
+    const-string v2, "/sys/class/power_supply/battery/voocchg_ing"
 
     invoke-direct {v1, v2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
@@ -492,11 +492,11 @@
 
     move-result p0
 
-    sget-object v2, Lcom/android/server/qeg;->Vg:Lcom/android/server/qeg$zta;
+    sget-object v2, Lcom/android/server/qeg;->Wg:Lcom/android/server/qeg$zta;
 
     invoke-virtual {v2, v0, v1, p0}, Lcom/android/server/qeg$zta;->tsu(III)V
 
-    sget-object p0, Lcom/android/server/qeg;->Vg:Lcom/android/server/qeg$zta;
+    sget-object p0, Lcom/android/server/qeg;->Wg:Lcom/android/server/qeg$zta;
 
     invoke-virtual {p0}, Lcom/android/server/qeg$zta;->updateLightsLocked()V
 
@@ -506,7 +506,7 @@
 .method private rm()V
     .registers 3
 
-    iget-boolean v0, p0, Lcom/android/server/qeg;->Ng:Z
+    iget-boolean v0, p0, Lcom/android/server/qeg;->Og:Z
 
     if-eqz v0, :cond_9
 
@@ -520,7 +520,7 @@
     const/4 v0, 0x0
 
     :goto_a
-    iput-boolean v0, p0, Lcom/android/server/qeg;->Mg:Z
+    iput-boolean v0, p0, Lcom/android/server/qeg;->Ng:Z
 
     sget-boolean v0, Lcom/android/server/qeg;->DEBUG:Z
 
@@ -534,7 +534,7 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-boolean p0, p0, Lcom/android/server/qeg;->Mg:Z
+    iget-boolean p0, p0, Lcom/android/server/qeg;->Ng:Z
 
     invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
@@ -553,7 +553,7 @@
 .method static synthetic rtg(Lcom/android/server/qeg;)Z
     .registers 1
 
-    iget-boolean p0, p0, Lcom/android/server/qeg;->Lg:Z
+    iget-boolean p0, p0, Lcom/android/server/qeg;->Mg:Z
 
     return p0
 .end method
@@ -577,7 +577,7 @@
 .method static synthetic tsu(Lcom/android/server/qeg;)Z
     .registers 1
 
-    iget-boolean p0, p0, Lcom/android/server/qeg;->Mg:Z
+    iget-boolean p0, p0, Lcom/android/server/qeg;->Ng:Z
 
     return p0
 .end method
@@ -593,7 +593,7 @@
 .method static synthetic you(Lcom/android/server/qeg;Z)Z
     .registers 2
 
-    iput-boolean p1, p0, Lcom/android/server/qeg;->Lg:Z
+    iput-boolean p1, p0, Lcom/android/server/qeg;->Mg:Z
 
     return p1
 .end method
@@ -601,7 +601,7 @@
 .method static synthetic zta(Lcom/android/server/qeg;)Z
     .registers 1
 
-    iget-boolean p0, p0, Lcom/android/server/qeg;->Kg:Z
+    iget-boolean p0, p0, Lcom/android/server/qeg;->Lg:Z
 
     return p0
 .end method
@@ -609,7 +609,7 @@
 .method static synthetic zta(Lcom/android/server/qeg;Z)Z
     .registers 2
 
-    iput-boolean p1, p0, Lcom/android/server/qeg;->Kg:Z
+    iput-boolean p1, p0, Lcom/android/server/qeg;->Lg:Z
 
     return p1
 .end method
@@ -619,7 +619,7 @@
 .method public addIntentExtra(Landroid/content/Intent;)V
     .registers 7
 
-    iget-boolean v0, p0, Lcom/android/server/qeg;->Og:Z
+    iget-boolean v0, p0, Lcom/android/server/qeg;->Pg:Z
 
     const/4 v1, 0x1
 
@@ -635,7 +635,7 @@
     move v0, v1
 
     :goto_b
-    iget-boolean v2, p0, Lcom/android/server/qeg;->Mg:Z
+    iget-boolean v2, p0, Lcom/android/server/qeg;->Ng:Z
 
     const/4 v3, 0x0
 
@@ -730,7 +730,7 @@
 .method public getFastChargeStatus()Z
     .registers 1
 
-    iget-boolean p0, p0, Lcom/android/server/qeg;->Mg:Z
+    iget-boolean p0, p0, Lcom/android/server/qeg;->Ng:Z
 
     return p0
 .end method
@@ -738,7 +738,7 @@
 .method public getLastFastChargeStatus()Z
     .registers 1
 
-    iget-boolean p0, p0, Lcom/android/server/qeg;->Pg:Z
+    iget-boolean p0, p0, Lcom/android/server/qeg;->Qg:Z
 
     return p0
 .end method
@@ -759,7 +759,7 @@
     :cond_b
     new-instance v0, Ljava/io/File;
 
-    const-string v1, "/sys/class/power_supply/battery/fastchg_status"
+    const-string v1, "/sys/class/power_supply/battery/voocchg_ing"
 
     invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
@@ -771,7 +771,7 @@
 
     if-eqz v0, :cond_1b
 
-    iput-boolean v1, p0, Lcom/android/server/qeg;->Ng:Z
+    iput-boolean v1, p0, Lcom/android/server/qeg;->Og:Z
 
     :cond_1b
     new-instance v0, Ljava/io/File;
@@ -786,7 +786,7 @@
 
     if-eqz v0, :cond_2a
 
-    iput-boolean v1, p0, Lcom/android/server/qeg;->Og:Z
+    iput-boolean v1, p0, Lcom/android/server/qeg;->Pg:Z
 
     :cond_2a
     if-eqz p1, :cond_4c
@@ -819,7 +819,7 @@
 
     invoke-direct {v0, p0, p1, v1}, Lcom/android/server/qeg$zta;-><init>(Lcom/android/server/qeg;Landroid/content/Context;Lcom/android/server/lights/LightsManager;)V
 
-    sput-object v0, Lcom/android/server/qeg;->Vg:Lcom/android/server/qeg$zta;
+    sput-object v0, Lcom/android/server/qeg;->Wg:Lcom/android/server/qeg$zta;
 
     :cond_4c
     return-void
@@ -981,15 +981,15 @@
 .method public updateLastFastChargeStatus()Z
     .registers 3
 
-    iget-boolean v0, p0, Lcom/android/server/qeg;->Pg:Z
+    iget-boolean v0, p0, Lcom/android/server/qeg;->Qg:Z
 
-    iget-boolean v1, p0, Lcom/android/server/qeg;->Mg:Z
+    iget-boolean v1, p0, Lcom/android/server/qeg;->Ng:Z
 
     if-eq v0, v1, :cond_a
 
     const/4 v0, 0x1
 
-    iput-boolean v1, p0, Lcom/android/server/qeg;->Pg:Z
+    iput-boolean v1, p0, Lcom/android/server/qeg;->Qg:Z
 
     goto :goto_b
 
@@ -1003,7 +1003,7 @@
 .method public updateLightsLocked()Z
     .registers 1
 
-    sget-object p0, Lcom/android/server/qeg;->Vg:Lcom/android/server/qeg$zta;
+    sget-object p0, Lcom/android/server/qeg;->Wg:Lcom/android/server/qeg$zta;
 
     if-eqz p0, :cond_9
 
